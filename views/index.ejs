@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= storeName %> - Premium Beauty & Perfume Store</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="navbar-container">
+            <div class="logo"><%= storeName %></div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div style="display: flex; gap: 1rem; align-items: center;">
+                <div class="cart-icon" style="font-size: 1.5rem; cursor: pointer;">🛒
+                    <div class="cart-badge" style="display: none;">0</div>
+                </div>
+                <div class="btn-auth">
+                    <a href="/auth/login" class="login">Login</a>
+                    <a href="/auth/signup" class="signup">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Elevate Your Beauty Journey</h1>
+            <p>Discover premium skincare, beauty products, and exquisite perfumes curated just for you</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="document.querySelector('#products').scrollIntoView({behavior: 'smooth'})">Shop Now</button>
+                <button class="btn btn-secondary">Explore Categories</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORIES SECTION -->
+    <section class="categories" id="categories">
+        <h2 class="section-title">Our Collections</h2>
+        <div class="category-grid">
+            <div class="category-card">
+                <div class="category-image">✨</div>
+                <div class="category-info">
+                    <h3>Skincare</h3>
+                    <p>Nourish and revitalize your skin with our premium skincare collection</p>
+                </div>
+            </div>
+            <div class="category-card">
+                <div class="category-image">💄</div>
+                <div class="category-info">
+                    <h3>Beauty</h3>
+                    <p>Express yourself with our extensive range of beauty and makeup products</p>
+                </div>
+            </div>
+            <div class="category-card">
+                <div class="category-image">🌸</div>
+                <div class="category-info">
+                    <h3>Perfumes</h3>
+                    <p>Find your signature scent from our curated perfume selection</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section class="features">
+        <div class="features-container">
+            <div class="feature-item">
+                <div class="feature-icon">🚚</div>
+                <h3>Fast Delivery</h3>
+                <p>Quick and reliable shipping across Nigeria</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">💯</div>
+                <h3>Premium Quality</h3>
+                <p>100% authentic and quality-assured products</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🔒</div>
+                <h3>Secure Payment</h3>
+                <p>Safe and secure payment options</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">💬</div>
+                <h3>24/7 Support</h3>
+                <p>Dedicated customer support team</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTS SECTION -->
+    <section class="products-section" id="products">
+        <div class="products-container">
+            <h2 class="section-title">Featured Products</h2>
+            
+            <div class="filters">
+                <button class="filter-btn active" data-category="all">All Products</button>
+                <button class="filter-btn" data-category="skincare">Skincare</button>
+                <button class="filter-btn" data-category="beauty">Beauty</button>
+                <button class="filter-btn" data-category="perfume">Perfumes</button>
+                <select class="sort-select" onchange="sortProducts(this.value)">
+                    <option value="">Sort By</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="name">Name: A to Z</option>
+                </select>
+            </div>
+
+            <div class="products-grid">
+                <!-- Sample Products -->
+                <div class="product-card" data-category="skincare" data-product-id="1">
+                    <div class="product-image">
+                        <div class="product-badge">New</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Skincare</div>
+                        <div class="product-name">Hydrating Face Serum</div>
+                        <div class="product-description">Deep hydration serum with hyaluronic acid and vitamin C</div>
+                        <div class="product-rating">
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star" style="opacity:0.5;">⭐</span>
+                            <span style="color: #999; font-size: 0.8rem;">(245)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="price-container">
+                                <div class="price">₦5,500</div>
+                                <div class="original-price">₦7,000</div>
+                            </div>
+                            <button class="btn-add-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="skincare" data-product-id="2">
+                    <div class="product-image">
+                        <div class="product-badge">Hot</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Skincare</div>
+                        <div class="product-name">Moisturizing Night Cream</div>
+                        <div class="product-description">Rich night cream for intensive overnight repair</div>
+                        <div class="product-rating">
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span style="color: #999; font-size: 0.8rem;">(189)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="price-container">
+                                <div class="price">₦6,200</div>
+                                <div class="original-price">₦8,500</div>
+                            </div>
+                            <button class="btn-add-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="beauty" data-product-id="3">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <div class="product-category">Beauty</div>
+                        <div class="product-name">Matte Liquid Lipstick</div>
+                        <div class="product-description">Long-lasting matte finish lipstick in 15 shades</div>
+                        <div class="product-rating">
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star" style="opacity:0.5;">⭐</span>
+                            <span style="color: #999; font-size: 0.8rem;">(312)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="price-container">
+                                <div class="price">₦3,800</div>
+                                <div class="original-price">₦5,500</div>
+                            </div>
+                            <button class="btn-add-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="perfume" data-product-id="4">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <div class="product-category">Perfume</div>
+                        <div class="product-name">Elegant Rose Perfume</div>
+                        <div class="product-description">Enchanting floral scent with rose and jasmine</div>
+                        <div class="product-rating">
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span style="color: #999; font-size: 0.8rem;">(428)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="price-container">
+                                <div class="price">₦8,500</div>
+                                <div class="original-price">₦12,000</div>
+                            </div>
+                            <button class="btn-add-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="beauty" data-product-id="5">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <div class="product-category">Beauty</div>
+                        <div class="product-name">Professional Makeup Brush Set</div>
+                        <div class="product-description">15-piece makeup brush set with elegant case</div>
+                        <div class="product-rating">
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star" style="opacity:0.5;">⭐</span>
+                            <span style="color: #999; font-size: 0.8rem;">(156)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="price-container">
+                                <div class="price">₦4,900</div>
+                                <div class="original-price">₦7,200</div>
+                            </div>
+                            <button class="btn-add-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="skincare" data-product-id="6">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <div class="product-category">Skincare</div>
+                        <div class="product-name">Anti-Aging Face Mask</div>
+                        <div class="product-description">Gold-infused anti-aging sheet mask - pack of 5</div>
+                        <div class="product-rating">
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span style="color: #999; font-size: 0.8rem;">(534)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="price-container">
+                                <div class="price">₦2,400</div>
+                                <div class="original-price">₦3,500</div>
+                            </div>
+                            <button class="btn-add-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAYMENT SECTION -->
+    <section class="payment-section">
+        <h2 class="section-title">Payment Methods</h2>
+        <div class="payment-methods">
+            <div class="payment-card active">
+                <div class="payment-icon">🏦</div>
+                <h3>Bank Transfer</h3>
+                <p>Direct bank transfer to our Opay account</p>
+            </div>
+        </div>
+
+        <div class="bank-details">
+            <h3 style="margin-bottom: 1.5rem; color: #d81e5b;">Payment Instructions</h3>
+            <div class="bank-detail-item">
+                <span class="bank-label">Bank Name:</span>
+                <span class="bank-value">Opay</span>
+            </div>
+            <div class="bank-detail-item">
+                <span class="bank-label">Account Number:</span>
+                <span class="bank-value">9035819351</span>
+            </div>
+            <div class="bank-detail-item">
+                <span class="bank-label">Account Name:</span>
+                <span class="bank-value">Paulineous David Emmanuel</span>
+            </div>
+            <div class="bank-detail-item">
+                <span class="bank-label">Description:</span>
+                <span class="bank-value">Glow Care Order</span>
+            </div>
+            <div style="margin-top: 1.5rem; padding: 1rem; background: #fff5f7; border-left: 4px solid #d81e5b; border-radius: 5px;">
+                <p style="color: #d81e5b; font-weight: 600; margin-bottom: 0.5rem;">📝 After Payment:</p>
+                <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">1. Take a screenshot of your transfer receipt</p>
+                <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">2. Email it to: <strong>davidpaulineous@gmail.com</strong></p>
+                <p style="font-size: 0.9rem; color: #666;">3. Include your order number and delivery address</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CART SIDEBAR -->
+    <div class="cart-sidebar">
+        <div class="cart-header">
+            <span>🛒 Shopping Cart</span>
+            <button class="cart-close" onclick="toggleCart()">×</button>
+        </div>
+        <div class="cart-items">
+            <p style="text-align:center;padding:2rem;color:#999;">Your cart is empty</p>
+        </div>
+        <div class="cart-total">
+            <div class="total-row">
+                <span>Subtotal:</span>
+                <span class="price">₦0.00</span>
+            </div>
+            <div class="total-row">
+                <span>Shipping:</span>
+                <span class="price">₦0.00</span>
+            </div>
+            <div class="total-row final">
+                <span>Total:</span>
+                <span class="price">₦0.00</span>
+            </div>
+            <button class="btn-checkout">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>About Glow Care</h4>
+                <p>Your one-stop destination for premium beauty, skincare, and perfume products. We bring you the best from around the world, delivered right to your doorstep.</p>
+                <div class="social-links">
+                    <a href="#" title="Facebook">f</a>
+                    <a href="#" title="Instagram">📷</a>
+                    <a href="#" title="Twitter">𝕏</a>
+                    <a href="#" title="WhatsApp">💬</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Customer Service</h4>
+                <ul>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#shipping">Shipping Info</a></li>
+                    <li><a href="#returns">Returns</a></li>
+                    <li><a href="#warranty">Warranty</a></li>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact & Location</h4>
+                <ul>
+                    <li>📧 <a href="mailto:davidpaulineous@gmail.com">davidpaulineous@gmail.com</a></li>
+                    <li>📱 <a href="tel:09035819351">09035819351</a></li>
+                    <li>📍 Ore, Ondo State, Nigeria</li>
+                </ul>
+                <h4 style="margin-top: 1.5rem;">Newsletter</h4>
+                <div class="footer-newsletter">
+                    <input type="email" placeholder="Enter your email">
+                    <button>Subscribe</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Glow Care. All rights reserved. | Designed with ❤️ for Beauty Lovers</p>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>
